@@ -1,58 +1,58 @@
 # Expense Tracker
-#### Introduction
+### Introduction
 This is to implement a CLI app to manage expenses 
-#### Usage
-You can interact  with the system through the following commands
-make sure you have python on your system
+### Usage
+- You can interact  with the system through the following commands
+- make sure you have python on your system
 
-Command
+**Command**
 ```shell
 py expense-tracker add --description "Lunch" --amount 20
 `````
-Output
-# Expense added successfully (ID: 1)
+**Output**
+##### Expense added successfully (ID: 1)
 
-Command
+**Command**
 ```shell
 py expense-tracker add --description "Dinner" --amount 10
 ```
-Output
-# Expense added successfully (ID: 2)
+****Output**
+##### Expense added successfully (ID: 2)
 
-Command
-```shell
-py expense-tracker list
+**Command**
+```sh**ell
+py** expense-tracker list
 ```
-Output
-# ID  Date       Description  Amount
-# 1   2024-08-06  Lunch        $20
-# 2   2024-08-06  Dinner       $10
+**Output**
+##### ID  Date       Description  Amount
+##### 1   2024-08-06  Lunch        $20
+##### 2   2024-08-06  Dinner       $10
 
-Command
+**Command**
 ```shell
 py expense-tracker summary
 ```
-Output
-# Total expenses: $30
+**Output**
+##### Total expenses: $30
 
-Command
+**Command**
 ```shell
 py expense-tracker delete --id 1
 ```
-Output
-# Expense deleted successfully
+**Output**
+##### Expense deleted successfully
 
-Command
+**Command**
 ```shell
 py expense-tracker summary
 ```
-Output
-# Total expenses: $20
+**Output**
+##### Total expenses: $20
 
-Command
+**Command**
 ```shell
 py expense-tracker summary --month 8
 ```
-Output
-# Total expenses for August: $20
+**Output**
+##### Total expenses for August: $20
 
