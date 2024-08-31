@@ -90,8 +90,8 @@ class UserOperationHandler:
 
             if self.month:
                 return self.__print_summary(month=self.month)
-            else:
-                return self.__print_summary()
+            
+            return self.__print_summary()
 
         if self.operation == 'add':
             return self.__add_expense()
@@ -129,7 +129,7 @@ class UserOperationHandler:
 
     def __delete_expense(self):
         expense_id = self.id
-        if expense_id == "0":
+        if int(expense_id) <= 0:
             print("Invalid ID")
             return
         expenses = load_expenses()
@@ -148,21 +148,24 @@ class UserOperationHandler:
 
             key = int(max(current_data.keys())) + 1
 
-            new_expense = default_arguments[0]
+            current_data[key] = self.update_default_expense(default_arguments[0])
 
-            new_expense['id'] = key
-            new_expense['description'] = validated_data['description']
-            new_expense['amount'] = validated_data['amount']
-            new_expense['category'] = validated_data['category']
-            new_expense['created'] = datetime.now().strftime("%Y-%m-%d")
-
-            current_data[key] = new_expense
-            data = current_data
-            virtual_key = key
+            data,virtual_key = current_data,key
+            
 
         with open(file_path, 'w') as file:
             json.dump(data, file, indent=4)
             return virtual_key if self.operation else "0"
+
+    @staticmethod
+    def update_default_expense(new_expense:dict):
+        new_expense['id'] = key
+        new_expense['description'] = validated_data['description']
+        new_expense['amount'] = validated_data['amount']
+        new_expense['category'] = validated_data['category']
+        new_expense['created'] = datetime.now().strftime("%Y-%m-%d")
+        return new_expense
+        
 
     def __repr__(self) -> str:
         return f''
