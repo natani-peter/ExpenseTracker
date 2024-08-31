@@ -3,7 +3,8 @@
 ## Introduction
 
 This is to implement a CLI app to manage Monthly Expenses
-For More information on the requirements click [here][https://roadmap.sh/projects/expense-tracker]
+For More information on the requirements
+Visit https://roadmap.sh/projects/expense-tracker
 
 ### Usage
 
