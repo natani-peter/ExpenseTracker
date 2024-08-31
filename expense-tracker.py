@@ -90,7 +90,7 @@ class UserOperationHandler:
 
             if self.month:
                 return self.__print_summary(month=self.month)
-            
+
             return self.__print_summary()
 
         if self.operation == 'add':
@@ -148,24 +148,22 @@ class UserOperationHandler:
 
             key = int(max(current_data.keys())) + 1
 
-            current_data[key] = self.update_default_expense(default_arguments[0])
+            current_data[key] = self.update_default_expense(default_arguments[0], validated_data, key)
 
-            data,virtual_key = current_data,key
-            
+            data, virtual_key = current_data, key
 
         with open(file_path, 'w') as file:
             json.dump(data, file, indent=4)
             return virtual_key if self.operation else "0"
 
     @staticmethod
-    def update_default_expense(new_expense:dict):
+    def update_default_expense(new_expense: dict, validated_data: dict, key: int) -> dict:
         new_expense['id'] = key
         new_expense['description'] = validated_data['description']
         new_expense['amount'] = validated_data['amount']
         new_expense['category'] = validated_data['category']
         new_expense['created'] = datetime.now().strftime("%Y-%m-%d")
         return new_expense
-        
 
     def __repr__(self) -> str:
         return f''
